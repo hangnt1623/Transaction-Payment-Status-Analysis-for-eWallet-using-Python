@@ -136,7 +136,7 @@ The e-wallet company lacks clear insights into how users engage with different p
 
 2️⃣ **Exploratory Data Analysis (EDA)**
 
-Before EDA, Merge payment_report with product
+Before EDA, Merge payment_report with product => payment_enriched
 
 **2.1. EDA payment_enriched**
 
