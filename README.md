@@ -139,6 +139,7 @@ The e-wallet company lacks clear insights into how users engage with different p
 Before EDA, Merge payment_report with product
 
 **2.1. EDA payment_enriched**
+
 **Step 1: Understand dataset**
 (1) Use "df.shape" to immediately know the number of transactions (rows) and types of information (columns) you're dealing with.
 ```python
