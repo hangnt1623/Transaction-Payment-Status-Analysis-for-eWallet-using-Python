@@ -145,13 +145,16 @@ Before EDA, Merge payment_report with product
 ```python
 'Size payment_enriched: ', payment_enriched.shape
 ```
-*Result*
+*Result*: 919 rows, 7 columns
 
 (2) Use "df.info()" to provides a quick summary of the structure and quality of payment_enriched
 ```python
 payment_enriched.info()
 ```
 *Result*
+
+<img width="261" alt="{81964A1C-94F8-49EB-A89A-1CE1C8EAE79C}" src="https://github.com/user-attachments/assets/269cfa32-8638-4dcf-940d-df0309e3ffb6" />
+
 
 (3) Use "df.head(10)" to visually inspect the actual data for the first 10 transactions
 ```python
@@ -165,6 +168,7 @@ payment_enriched.describe()
 
 
 **Step 2: Inspect & Valid dataset**
+
 - First of all, use ProfileReport to generate automated Exploratory Data Analysis (EDA) reports for payment_enriched, this provide a quick overview of data quality, missing values, and variable distribution, helping you understand your payment_enriched data immediately
 ```python
 profile = ProfileReport(payment_enriched, title="EDA payment_enriched Report", explorative=True)
@@ -441,27 +445,18 @@ summary
 📌 Key Takeaways:
 
 - Top products account for the highest payment volumes, allowing the company to focus efforts on optimizing these key products for revenue and user experience.
-
 - No products violate the rule that each product_id is owned by only one team, ensuring clear product ownership and management.
-
 - The team with the lowest performance since Q2 2023 has been identified, along with the category contributing the least to that team, enabling targeted improvement efforts.
-
 - Refund transactions are heavily concentrated in source_id 38, which accounts for 59.11% of refund volume (~36.5 billion), indicating a critical area for operational review and risk mitigation.
-
 - Transaction types have been accurately classified, supporting detailed analysis of user behavior and transaction flows.
-
 - Summary statistics by transaction type—number of transactions, volume, unique senders and receivers—provide a comprehensive overview of platform activity
 
 💡 Recommendations:
 
 - Prioritize development and support for top-performing products to sustain and grow revenue.
-
 - Maintain clear and strict product ownership rules to avoid management conflicts.
-
 - Investigate the causes of underperformance for the identified team and category, and implement targeted improvements or support.
-
 - Focus on analyzing and mitigating issues related to the main refund source (source_id 38) to reduce refund rates and improve customer satisfaction.
-
 - Continue monitoring transaction types closely to detect trends or anomalies early, enabling proactive operational decisions.
 
 
