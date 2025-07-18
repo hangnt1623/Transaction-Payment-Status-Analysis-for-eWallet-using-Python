@@ -3,9 +3,9 @@
 ---
 ![image](https://github.com/user-attachments/assets/cb5cd69b-87d2-4ae1-99d3-5ab8504c9099)
 
-- Author: Nguyen Thuy Hang 
-- Date: 2025-06-22
-- Tools Used: Python  
+- **Author**: Nguyen Thuy Hang 
+- **Date**: 2025-06-22
+- **Tools Used**: Python  
 
 ---
 
