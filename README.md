@@ -106,7 +106,7 @@ There are 3 tables are in the dataset: payment, product, transactions
 Before EDA, Merge payment_report with product => payment_enriched
 
 <details>
-  <summary>📊 <strong>2.1. EDA payment_enriched</strong></summary>
+  <summary> <strong>2.1. EDA payment_enriched</strong></summary>
 
 **Step 1: Understand dataset**
 (1) Use "df.shape" to immediately know the number of transactions (rows) and types of information (columns) you're dealing with.
@@ -203,7 +203,7 @@ Checking distribution is to understand how data values are spread and concentrat
 </details>
 
 <details>
-  <summary>📊 <strong>2.2. EDA transactions</strong></summary>
+  <summary> <strong>2.2. EDA transactions</strong></summary>
   
 **Step 1: Understand dataset**
 
@@ -287,8 +287,10 @@ Result: 186889 rows x 9 columns -> Next step: No action
 3️⃣ **Data Wrangling & Analysis**
 
 <details>
-  <summary>📊 <strong>❓Identify top-performing products by volume</strong></summary>
-  
+  <summary> <strong>❓Identify top-performing products by volume</strong></summary>
+
+*Purpose*: To recognize which e-wallet products are driving the most transaction activity (by volume or value), helping prioritize investment, marketing, and feature development efforts.
+
 ```python
 #Top 3 product_ids with the highest volume
 top_3_products = (
@@ -315,7 +317,9 @@ top_3_products
 </details>
 
 <details>
-  <summary>📊 <strong>❓Detect ownership rule violations (1 product → 1 team rule)</strong></summary>
+  <summary> <strong>❓Detect ownership rule violations (1 product → 1 team rule)</strong></summary>
+
+*Purpose*: To ensure operational clarity and accountability by identifying any products managed by multiple teams-violating the "one product, one team" policy-which may cause inefficiencies or conflicting responsibilities.
 
 ```python
 ## Step 1: Count unique team_own per product_id
@@ -335,7 +339,9 @@ payment_enriched[payment_enriched['product_id'].isin(abnormal_products)]
 </details>
 
 <details>
-  <summary>📊 <strong>❓Determine lowest-performing team since Q2 2023 and their weakest category</strong></summary>
+  <summary> <strong>❓Determine lowest-performing team since Q2 2023 and their weakest category</strong></summary>
+
+*Purpose*: To pinpoint underperformance at both the team and category level, enabling targeted interventions, retraining, or resource reallocation to improve outcomes.
 
 ```python
 ## Step 1: Filter data Q2/2023
@@ -361,7 +367,9 @@ worst_cate
 </details>
 
 <details>
-  <summary>📊 <strong>❓Analyze source_id contributions to refund volume</strong></summary>
+  <summary> <strong>❓Analyze source_id contributions to refund volume</strong></summary>
+
+*Purpose*: To understand which sources are generating the most refund activity, helping to identify potential issues like product defects, policy misuse, or fraud.
 
 ```python
 # Filter refund transactions
@@ -393,7 +401,9 @@ print(f"Contribution: {refund_contribution_pct[top_source_id]:.2f}%")
 </details>
 
 <details>
-  <summary>📊 <strong>❓Categorize each transaction into defined transaction_type</strong></summary>
+  <summary> <strong>❓Categorize each transaction into defined transaction_type</strong></summary>
+
+*Purpose*: To organize raw transaction data into meaningful categories (e.g., payment, transfer, refund), enabling more structured analysis and easier performance tracking across transaction types.
 
 ```python
 conditions = [
@@ -419,7 +429,9 @@ transactions['transaction_type'] = np.select(conditions, transaction_types, defa
 </details>
 
 <details>
-  <summary>📊 <strong>❓For each valid type, compute: Number of transactions, Total transaction volume, Unique senders and receivers</strong></summary>
+  <summary> <strong>❓For each valid type, compute: Number of transactions, Total transaction volume, Unique senders and receivers</strong></summary>
+
+*Purpose*: To generate key operational metrics that reveal transaction behavior, customer engagement, and scale of usage per transaction type-informing decisions around product scaling, user experience, and fraud detection.
 
 ```python
 ## Filter out invalid transactions
@@ -455,20 +467,22 @@ summary
 
 📌 **Key Takeaways:**
 
-- Top products account for the highest payment volumes, allowing the company to focus efforts on optimizing these key products for revenue and user experience.
-- No products violate the rule that each product_id is owned by only one team, ensuring clear product ownership and management.
-- The team with the lowest performance since Q2 2023 has been identified, along with the category contributing the least to that team, enabling targeted improvement efforts.
-- Refund transactions are heavily concentrated in source_id 38, which accounts for 59.11% of refund volume (~36.5 billion), indicating a critical area for operational review and risk mitigation.
-- Transaction types have been accurately classified, supporting detailed analysis of user behavior and transaction flows.
-- Summary statistics by transaction type—number of transactions, volume, unique senders and receivers—provide a comprehensive overview of platform activity
+- Top products account for the highest **payment volumes**, allowing the company to focus efforts on optimizing these key products for **revenue** and **user experience**.
+- No products violate the rule that each **product_id** is owned by only one **team**, ensuring clear **product ownership** and **management**.
+- The team with the **lowest performance** since **Q2 2023** has been identified, along with the **category contributing the least**, enabling **targeted improvement** efforts.
+- **Refund transactions** are heavily concentrated in **source_id 38**, which accounts for **59.11%** of refund volume (~**36.5 billion**), indicating a critical area for **operational review** and **risk mitigation**.
+- **Transaction types** have been accurately **classified**, supporting detailed analysis of **user behavior** and **transaction flows**.
+- Summary statistics by **transaction type** — **number of transactions**, **volume**, **unique senders** and **receivers** — provide a comprehensive overview of **platform activity**.
+
 
 💡 **Recommendations:**
 
-- Prioritize development and support for top-performing products to sustain and grow revenue.
-- Maintain clear and strict product ownership rules to avoid management conflicts.
-- Investigate the causes of underperformance for the identified team and category, and implement targeted improvements or support.
-- Focus on analyzing and mitigating issues related to the main refund source (source_id 38) to reduce refund rates and improve customer satisfaction.
-- Continue monitoring transaction types closely to detect trends or anomalies early, enabling proactive operational decisions.
+- **Prioritize** development and support for **top-performing products** to sustain and grow **revenue**.
+- Maintain **clear** and **strict product ownership rules** to avoid **management conflicts**.
+- **Investigate** the causes of **underperformance** for the identified **team** and **category**, and implement **targeted improvements** or **support**.
+- Focus on analyzing and **mitigating** issues related to the main **refund source** (**source_id 38**) to reduce **refund rates** and improve **customer satisfaction**.
+- Continue **monitoring** **transaction types** closely to detect **trends** or **anomalies** early, enabling **proactive operational decisions**.
+
 
 
 
